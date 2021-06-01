@@ -1,0 +1,8 @@
+Book.o : Book.cpp Book.hpp
+	g++ -c -O Book.cpp
+Ebook.o : Ebook.cpp Ebook.hpp
+	g++ -c -O Ebook.cpp 
+UseEbook.o : UseEbook.cpp
+	g++ -c -O UseEbook.cpp
+UseEbook : UseEbook.o Ebook.o Book.o
+	g++ -O -o UseEbook UseEbook.o Ebook.o Book.o

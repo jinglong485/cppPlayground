@@ -1,0 +1,20 @@
+Common options I need to know for now
+
+1. Specify the C++ version or ISO standard version
+    -std=c++11/14/11/20
+    -std=gnu++11/14/17/20   //iso C++ with gnu extension
+2. Verbosity: warning flags
+    -Wall //turn on lots of compliler warning flags, this is just a set of
+warnings, actually not all
+    -Wextra //enable extra warning
+    -Werror //every waring is treated as an error
+3. Output file: -o <outputfile>
+    g++ file.cpp -o file.bin
+4. Optmization
+    -O0 No optmization
+    -O2/O3
+    -OFast -> Enables higher level of optmization than -O3
+5. Special Options
+    -g -> Builds executable with debugging symbles for GNU/LLDB debbuger
+    -c -> Compiler sources to object-code, which is input file for linker
+

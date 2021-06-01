@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+    \title{\textbf{notes about c++}}
+    \author{Jinglong Guo}
+    \date{\today}
+\usepackage{amsmath}
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Notes From Chapter One}
+For float number type variables, what is important is the eps, for different type float/double/long double, I need to know the min/max and eps. For now I don't know how to get this info.\\
+For integer number type variables, the eps is always zero, so I need to know about the max/min of integer type. These infomation should be included in standard C++ headers.\\
+Division of integers is roundjto integer. To get more accurate double results, type conversion should be used.\\
+The initialization of an array is $\left\{\left\{row\right\}, \left\{row\right\}...\left\{row\right\}\right\}$. This is for two dimensional array, for higher dimensional array, I need to explore more.
+For char is ASCII character. The C-style string is actually an array of char. In C++ there is a standard class as string in std::string(header \textless string\textgreater \space should be included.). I need to explore std::string more.\\
+For output of end of a string, there are two way of newline: std::endl and \textbackslash n, the difference is std::endl will flush the buffered string to console but \textbackslash n is just a character. So in order to output the all the time I need to use flush. The output of C++ is buffered, including to console and to file.\\
+Assert in \textless cassert\textgreater \space will check the statement is right, if the statement is false, assert will terminate the code and raise error. It is good to check some requirement is met, but is not a good implanmentation of error handling.
+\section{Notes From Chapter Two}
+When use switch statement, it always comes with break in each caese.\\
+For comparing two float numbers, it is better to use the absolute value of two variables is less than certain number because of the eps.
+\section{Notes From Chapter Three}
+std::cerr can redirect output to console. Its meaning is \textbf{c}onsole \textbf{err}or. When used in console output, it behaves exactly same as std::cout.When used to file output, only std::cout will process output, std::cerr will be processed to console screen.\\
+The initialization of std::oifstream must have other options, I also don't know how to write binary files. File also has useful methods like is\textbf{open(), good()}.\\
+For argc and argv, the argv[i] cannot be used directly, so atoi, atof and other methods are needed to convert argv[i] to the certain type that program needs.\\
+Another question is when use dummy variables combined with file.clear() and file.seekg(std::ios::beg) to count the file lines and reset the pointer to the beginning of the file. The counting result is always 1 line more. In fact it counts the last line twice, so line-- at the end of the counting is necessary. I need to learn a better way to count the lines of a text file.\\
+The output format is not really clear in this book. I really need to explore more.
+\section{Notes From Chapter Four}
+The dynamic allocation of a vector is straightforward. The priciple is every \textbf{new} comes with a \textbf{delete[]}. It is good to remember there is a [] after delete defined as delete memory key word.\\
+For dynamic matrix assignment, the pointer should be a pointer of pointer (i.e. double asterisk), also the allocation needs to be done twice, the first time is an array of pointers, which defines the row of the matrix. at each row in a for loop, there is second allocation for each row, in pricipal, each row doesn't necessarily need to have the same columns. The release of the memory also needs two folds. The first one is to release each row in a for loop, then release the array of pointers.\\
+assert(p\underline{ }x != NULL) can be used to check if a pointer is successfully allocated.
+\section{Notes From Chapter Five}
+A variable declared in a block can only be used in this block, otherwise the variable is \emph{out of scope}. 
+The pointer of function is really useful when appling the same algrithm to different fuctions. The declaration of a function pointer needs the list of input variables, when using the pointer, even the input is null, parentheses is still needed.
+\section{Notes From Chapter Six}
+Include guard for avoiding include the same header multiple times.\\
+g++ does not need -lm since cmath is linked by stdc++ automatically.\\
+Destructor is needed when works with dynamic allocated matrix. Pointer can also be used to point class. When use class pointer, -\textgreater \space is the operator to access the components of the object. Friend key word is useful for test class to access the private components.\\
+I need to know more about operator overloading. Expecially the << in iostream.\\
+\section{Notes From Chapter Seven}
+The \textbf{virtual} keyword is a signal to the compiler that a method has the potential to be overridden by a derived class. And an overloaded virtual method is also virtual method, that mean even if a derived class overloads a virtual method without explicitly, another derived class from this derived class is able to overload this method.\\
+The inherence of class has three types: public, protected and private. I usually use public, for now.\\
+If an absolute abstract class has some virtual methods that are meant to be overloaded, the declaration of such methods should have " = 0" at the end of the method defination to mark this method is \underline{pure virtual}.\\
+\section{Notes From Chapter Eight}
+Template and STL is very important part, this chapter is not very detailed. The important STL includes Vector,set and array. The \textbf{auto} I found really useful when use interator in a for loop to go throug a vector.\\
+range\underline{ }based for loop works just like for in python. I believe it can go through all items in STL containers like vector and set.\\
+When compile a template header with its cpp part, the problem will rise. Beacuse if I use the traiditional include header method, the dynamically assigned template will be fixied. That means this template is fixed type for further use. If I need another type template, it will raise error. The fix is to include cpp and the header file, or put the entire header class in the hpp file, the drawback is this will compile the entire class multiple times, also if include guard is not written in the cpp part, it would cause multiple include, inducing unkown problem.
+\section{Notes From Chapter Nine}
+I need to learn more about try, throw and catch in error handling.\\
+The test kit I is CxxTest and boost.test. To enable white box test, I need to include the test class as friend class in the to be tested class.
+\end{document}
+

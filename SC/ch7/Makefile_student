@@ -1,0 +1,10 @@
+Student.o : Student.cpp Student.hpp
+	g++ -c -O Student.cpp
+GraduateStudent.o : GraduateStudent.cpp GraduateStudent.hpp
+	g++ -c -O GradeStudent.cpp 
+PhDStudent.o : PhDStudent.cpp PhDStudent.hpp
+	g++ -c -O PhDStudent.cpp
+exe7.1.5.o : exe7.1.5.cpp
+	g++ -c -O exe7.1.5.cpp
+exe7.1.5 : Student.o GraduateStudent.o PhDStudent.o exe7.1.5.o
+	g++ -O -o exe7.1.5 Student.o GraduateStudent.o PhDStudent.o exe7.1.5.o

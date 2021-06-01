@@ -1,0 +1,8 @@
+Guest.o : Guest.cpp Guest.hpp
+	g++ -c -O Guest.cpp
+SpecialGuest.o : SpecialGuest.cpp SpecialGuest.hpp
+	g++ -c -O SpecialGuest.cpp 
+UseSpecialGuest.o : UseSpecialGuest.cpp
+	g++ -c -O UseSpecialGuest.cpp
+UseSpecialGuest : UseSpecialGuest.o Guest.o SpecialGuest.o
+	g++ -O -o UseSpecialGuest UseSpecialGuest.o Guest.o SpecialGuest.o

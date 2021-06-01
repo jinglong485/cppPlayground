@@ -1,0 +1,6 @@
+ExampleClass.o : ExampleClass.cpp ExampleClass.hpp
+	g++ -c -O ExampleClass.cpp
+UseFriend.o : UseFriend.cpp
+	g++ -c -O UseFriend.cpp
+UseFriend : ExampleClass.o UseFriend.o
+	g++ -O -o UseFriend ExampleClass.o UseFriend.o

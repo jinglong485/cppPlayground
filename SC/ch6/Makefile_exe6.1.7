@@ -1,0 +1,6 @@
+ComplexNumber.o : ComplexNumber.cpp ComplexNumber.hpp
+	g++ -c -O ComplexNumber.cpp
+exe6.1.7.o : exe6.1.7.cpp
+	g++ -c -O exe6.1.7.cpp
+exe6.1.7	: ComplexNumber.o exe6.1.7.o
+	g++ -O -o exe6.1.7 exe6.1.7.o ComplexNumber.o
